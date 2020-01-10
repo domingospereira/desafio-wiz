@@ -1,14 +1,20 @@
 # desafio-wiz
 1 - Foi criado uma solução chamada DesafioWiz onde foi inculuido dois projetos, um WebApplication Rest Api e um projeto de Class Library.
+
 2 - O projeto Class Library se chama MovieDataBaseApi onde é feito a implementação do endpoint que consulta os filmes a serem lançados. E foi criado uma class chamada Movies e nela foi feito encapsulamento da class HttpClient e criado um metodo chamado BuscarLancamentos que recebe como parâmetro um campo inteiro para ser informado a número da página que será consultado na API (https://developers.themoviedb.org/3).
+
 3 - Nos dois projetos foi adicionado a biblioteca externa Newtonsoft.Json que é utilizada para fazer a desserialização do json retornado na consulta dos filmes que serão lançados.
+
 4 - No projeto WebApplication Rest Api foi criado um controller chamado FilmesLancamento onde tem como injeção de independência da class HttpClient. No FilmesLancamento é implementado o metodo get e terá como parametro um campo inteiro chamado pagina com valor padrão zero, e será retornado uma lista de filmes lançados com inforamções dos filmes como nome, descrição, data lançamento e gênero. Nesse projeto tem referência do projeto MovieDataBaseApi.
+
 O retorno da API criada terá as definições das classes abaixo:
+    
     public class FilmesResposta
     {
         public string Mensagem { get; set; }
         public IEnumerable<Filmes> Filmes { get; set; }
     }
+    
     public class Filmes
     {
         public string Titulo { get; set; }
